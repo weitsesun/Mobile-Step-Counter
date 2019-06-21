@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
   console.log('received a post request');
-  console.table(req);
+  console.log(req.body.pastStepCount);
   res.status(200).send();
 })
 
