@@ -18,8 +18,8 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
   // console.log('received a post request');
-  console.log(req.body.pastStepCount);
-  console.log(req.body.currentStepCount);
+  // console.log(req.body.pastStepCount);
+  console.log("current steps: " + req.body.currentStepCount);
   res.status(200).send();
 })
 
