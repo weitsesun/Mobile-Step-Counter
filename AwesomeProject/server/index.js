@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
   console.log('received a post request');
-  console.log('req: ' + req);
+  console.table(req);
   res.status(200).send();
 })
 

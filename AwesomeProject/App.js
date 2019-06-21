@@ -15,7 +15,7 @@ export default class PedometerSensor extends React.Component {
     this._subscribe();
     // axios.get('http://3.17.24.167:3000/', (err, data) => {
     // })
-    setInterval(sendData.bind(this), 300);
+    // setInterval(this.sendData.bind(this), 2000);
   }
 
   sendData() {
