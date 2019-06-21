@@ -1,4 +1,6 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const db = require("../Database/index.js");
 
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -12,6 +14,12 @@ app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
   console.log("hi");
+})
+
+app.post('/', (req, res) => {
+  console.log('received a post request');
+  console.log('req: ' + req);
+  res.status(200).send();
 })
 
 app.listen(PORT, () => {

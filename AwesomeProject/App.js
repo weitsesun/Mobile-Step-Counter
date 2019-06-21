@@ -7,13 +7,31 @@ export default class PedometerSensor extends React.Component {
   state = {
     isPedometerAvailable: "checking",
     pastStepCount: 0,
-    currentStepCount: 0
+    currentStepCount: 0,
+    postSuccess: false
   };
-
+  
   componentDidMount() {
     this._subscribe();
-    axios.get('http://64.124.137.130:3000/', (err, data) => {
-    })
+    // axios.get('http://3.17.24.167:3000/', (err, data) => {
+    // })
+    setInterval(sendData.bind(this), 300);
+  }
+
+  sendData() {
+    axios.post('http://3.17.24.167:3000/', { 
+      pastStepCount: this.state.pastStepCount,
+      currentStepCount: this.state.currentStepCount
+  }).then(() => {
+    this.setState({
+      postSuccess: true
+    });
+  })
+  .catch(() => {
+    this.setState({
+      postSuccess: false
+    });
+  })
   }
 
   componentWillUnmount() {
@@ -25,7 +43,7 @@ export default class PedometerSensor extends React.Component {
       this.setState({
         currentStepCount: result.steps
       });
-    });~
+    });
 
     Pedometer.isAvailableAsync().then(
       result => {
