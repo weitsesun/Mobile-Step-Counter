@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 let currentStep = 0;
 
 app.get('/', (req, res) => {
+  console.log('received a get request');
   res.status(200).send(JSON.stringify(currentStep));
 })
 
