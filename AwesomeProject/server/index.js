@@ -16,17 +16,21 @@ let currentStep = 0;
 
 app.get('/', (req, res) => {
   console.log('received a get request');
-  console.log(currentStep);
   res.status(200).send(JSON.stringify(currentStep));
 })
 
 app.post('/', (req, res) => {
   console.log("current steps: " + req.body.currentStepCount);
+  console.log(typeof req.body.currentStepCount);
   // let today = getToday();
-  // db.stepData.save()
-  this.currentStep = req.body.currentStep;
-  console.log(this.currentStep);
-  res.status(201);
+  // db.stepData.save({"date": today,
+  //                   "curStep": req.body.currentStepCount})
+  //   .then(() => {
+  //     res.status(201).send('success')
+  //   })
+  //   .error(() => {
+  //     res.status(500).send(err);
+  //   })  
 })
 
 function getToday() {
