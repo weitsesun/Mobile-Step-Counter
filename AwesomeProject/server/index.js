@@ -12,6 +12,8 @@ const PORT = 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
+mongoose.connect('mongodb://localhost:27017/stepData', { useNewUrlParser: true });
+
 let currentStep = 0;
 
 app.get('/', (req, res) => {
