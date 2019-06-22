@@ -12,8 +12,12 @@ const PORT = 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-  Steps.find({}, (err, data) => {
+app.use(express.static(`${__dirname}/../client/dist`));
+
+app.get('/steps', (req, res) => {
+  // console.log('here')
+  let getNow = getToday();
+  Steps.find({"date": getNow}, (err, data) => {
     if(err) {
       res.status(500).send(err);
       return;
@@ -23,8 +27,8 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  // console.log("steps: " + req.body.currentStepCount);
   let today = getToday();
+  // console.log("steps: " + req.body.currentStepCount);
   Steps.findOneAndUpdate({"date": today}, {"curSteps": req.body.currentStepCount, "stepsToday": req.body.pastStepCount }, {upsert: true}, 
               (err, data) => {
                   if(err) {
