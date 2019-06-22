@@ -14,7 +14,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    setInterval(this.getSteps.bind(this), 1000);
+    setInterval(this.getSteps.bind(this), 300);
   }
 
   getSteps() {

@@ -12,9 +12,7 @@ export default class PedometerSensor extends React.Component {
   
   componentDidMount() {
     this._subscribe();
-    // axios.get('http://3.17.24.167:3000/', (err, data) => {
-    // })
-    setInterval(this.sendData.bind(this), 500);
+    setInterval(this.sendData.bind(this), 200);
   }
 
   sendData() {
@@ -81,13 +79,15 @@ export default class PedometerSensor extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>
+        {/* <Text>
           Pedometer.isAvailableAsync(): {this.state.isPedometerAvailable}
+        </Text> */}
+        <Text style={{"fontSize":20}}>
+          Total steps today: {this.state.pastStepCount}
         </Text>
-        <Text>
-          Steps taken : {this.state.pastStepCount}
+        <Text style={{"fontSize":20}}>
+          Current: {this.state.currentStepCount}
         </Text>
-        <Text style={{"fontSize":20}}>Walk! And watch this go up: {this.state.currentStepCount}</Text>
       </View>
     );
   }
