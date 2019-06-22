@@ -31,7 +31,6 @@ app.post('/', (req, res) => {
                     res.status(500).send(err);
                     return;
                   }
-                  // console.log(data);
                   res.status(201).send();
               })
 })
