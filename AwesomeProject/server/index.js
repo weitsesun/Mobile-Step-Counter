@@ -24,6 +24,7 @@ app.post('/', (req, res) => {
   // let today = getToday();
   // db.stepData.save()
   currentStep = req.body.currentStep;
+  console.log(currentStep);
   res.status(201);
 })
 
