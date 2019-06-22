@@ -25,7 +25,7 @@ app.post('/', (req, res) => {
   console.log("current steps: " + req.body.currentStepCount);
   console.log(typeof req.body.currentStepCount);
   let today = getToday();
-  console.log(db.stepData);
+  console.log(db);
   // db.stepData.save({"date": today,
   //                   "curStep": req.body.currentStepCount})
   //   .then(() => {
