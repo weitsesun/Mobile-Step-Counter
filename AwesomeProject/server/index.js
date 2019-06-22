@@ -12,16 +12,33 @@ const PORT = 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
+let currentStep = 0;
+
 app.get('/', (req, res) => {
-  console.log("hi");
+  res.status(200).send(currentStep);
 })
 
 app.post('/', (req, res) => {
-  // console.log('received a post request');
-  // console.log(req.body.pastStepCount);
   console.log("current steps: " + req.body.currentStepCount);
-  res.status(200).send();
+  // let today = getToday();
+  // db.stepData.save()
+  currentStep = req.body.currentStep;
+  res.status(201).send();
 })
+
+function getToday() {
+  let today = new Date();
+  let dd = today.getDate();
+  let mm = today.getMonth() + 1;
+  let yyyy = today.getFullYear();
+  if (dd < 10) {
+    dd = '0' + dd;
+  }
+  if (mm < 10) {
+    mm = '0' + mm;
+  }
+  return mm + '/' + dd + '/' + yyyy;
+}
 
 app.listen(PORT, () => {
   console.log(`Server is listening on PORT: ${PORT}`)
