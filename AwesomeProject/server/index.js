@@ -22,15 +22,15 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
   console.log("current steps: " + req.body.currentStepCount);
   console.log(typeof req.body.currentStepCount);
-  // let today = getToday();
-  // db.stepData.save({"date": today,
-  //                   "curStep": req.body.currentStepCount})
-  //   .then(() => {
-  //     res.status(201).send('success')
-  //   })
-  //   .error(() => {
-  //     res.status(500).send(err);
-  //   })  
+  let today = getToday();
+  db.stepData.save({"date": today,
+                    "curStep": req.body.currentStepCount})
+    .then(() => {
+      res.status(201).send('success')
+    })
+    .error(() => {
+      res.status(500).send(err);
+    })  
 })
 
 function getToday() {
