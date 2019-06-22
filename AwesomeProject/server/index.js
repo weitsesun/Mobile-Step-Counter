@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const db = require("../Database/index.js");
+const { Steps } = require("../Database/schema.js");
 
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -12,28 +12,27 @@ const PORT = 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/stepData', { useNewUrlParser: true });
-
-let currentStep = 0;
-
 app.get('/', (req, res) => {
-  console.log('received a get request');
-  res.status(200).send(JSON.stringify(currentStep));
+  Steps.find({}, (err, data) => {
+    if(err) {
+      res.status(500).send(err);
+      return;
+    }
+    res.status(200).send(data);
+  })
 })
 
 app.post('/', (req, res) => {
-  console.log("current steps: " + req.body.currentStepCount);
-  console.log(typeof req.body.currentStepCount);
   let today = getToday();
-  console.log(db);
-  // db.stepData.save({"date": today,
-  //                   "curStep": req.body.currentStepCount})
-  //   .then(() => {
-  //     res.status(201).send('success')
-  //   })
-  //   .error(() => {
-  //     res.status(500).send(err);
-  //   })  
+  Steps.findOneAndUpdate({"date": today}, {"curSteps": req.body.currentStepCount}, {upsert: true}, 
+              (err, data) => {
+                  if(err) {
+                    console.log(err);
+                    res.status(500).send(err);
+                    return;
+                  }
+                  res.status(201).send();
+              })
 })
 
 function getToday() {
