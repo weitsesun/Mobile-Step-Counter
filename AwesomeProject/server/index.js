@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 let currentStep = 0;
 
 app.get('/', (req, res) => {
-  res.status(200).send(currentStep);
+  res.status(200).send(JSON.stringify(currentStep));
 })
 
 app.post('/', (req, res) => {
@@ -23,7 +23,7 @@ app.post('/', (req, res) => {
   // let today = getToday();
   // db.stepData.save()
   currentStep = req.body.currentStep;
-  res.status(201).send();
+  res.status(201);
 })
 
 function getToday() {
