@@ -60,7 +60,8 @@ export default class PedometerSensor extends React.Component {
 
     const end = new Date();
     const start = new Date();
-    start.setDate(end.getDate() - 1);
+    // start.setDate(end.getDate() - 1);
+    start.setHours(0,0,0,0);
     Pedometer.getStepCountAsync(start, end).then(
       result => {
         this.setState({ pastStepCount: result.steps });
@@ -85,7 +86,7 @@ export default class PedometerSensor extends React.Component {
           Pedometer.isAvailableAsync(): {this.state.isPedometerAvailable}
         </Text>
         <Text>
-          Steps taken in the last 24 hours: {this.state.pastStepCount}
+          Steps taken today: {this.state.pastStepCount}
         </Text>
         <Text style={{"fontSize":20}}>Walk! And watch this go up: {this.state.currentStepCount}</Text>
       </View>
