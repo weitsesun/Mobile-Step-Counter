@@ -45,10 +45,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>{this.state.date}</h1>
-        <h1>Current Steps: {this.state.curSteps}</h1>
-        <h1>Total Steps Today: {this.state.stepsToday}</h1>
+      <div className="dashboard">
+        <div>{this.state.date}</div>
+        <div>Current Steps: {this.state.curSteps}</div>
+        <div>Today: {this.state.stepsToday}</div>
       </div>
     )
   }
