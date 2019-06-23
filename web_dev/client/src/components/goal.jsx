@@ -7,7 +7,7 @@ class Goal extends React.Component {
   render() {
     return (
       <div className="goal">
-        {this.props.curSteps}
+        Goal: {this.props.curSteps} / 10000
       </div>
     )
   }

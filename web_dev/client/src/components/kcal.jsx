@@ -7,7 +7,7 @@ class Kcal extends React.Component {
   render() {
     return (
       <div className="kcal">
-        {this.props.curSteps}
+        🔥 {(this.props.curSteps * 0.05).toFixed(1)} cals
       </div>
     )
   }

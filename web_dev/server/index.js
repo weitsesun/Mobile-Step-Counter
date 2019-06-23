@@ -15,8 +15,7 @@ app.use(bodyParser.json());
 app.use(express.static(`${__dirname}/../client/dist`));
 
 app.get('/steps', (req, res) => {
-  // console.log('here')
-  let getNow = getToday();
+  let getNow = req.query.date;
   Steps.find({"date": getNow}, (err, data) => {
     if(err) {
       res.status(500).send(err);
@@ -28,7 +27,6 @@ app.get('/steps', (req, res) => {
 
 app.post('/', (req, res) => {
   let today = getToday();
-  // console.log("steps: " + req.body.currentStepCount);
   Steps.findOneAndUpdate({"date": today}, {"curSteps": req.body.currentStepCount, "stepsToday": req.body.pastStepCount }, {upsert: true}, 
               (err, data) => {
                   if(err) {

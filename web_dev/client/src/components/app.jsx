@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: "",
+      date: getToday(),
       curSteps: 0,
       stepsToday: 0
     }
@@ -23,7 +23,7 @@ class App extends React.Component {
   }
 
   getSteps() {
-    axios.get('/steps')
+    axios.get('/steps', { params: {date: this.state.date} })
       .then((data) => {
         let newData = data.data[0]
         this.setState({
@@ -47,6 +47,8 @@ class App extends React.Component {
       <div className="dashboard">
         <Date today={this.state.date}/>
         <CurrentStep curSteps={this.state.curSteps + this.state.stepsToday}/>
+        <Goal curSteps={this.state.curSteps + this.state.stepsToday}/>
+        <Kcal curSteps={this.state.curSteps + this.state.stepsToday}/>
       </div>
     )
   }
