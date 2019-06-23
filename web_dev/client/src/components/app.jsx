@@ -1,6 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-import CurrentStep from './currentStep.jsx'
+import Date from './date.jsx';
+import CurrentStep from './currentStep.jsx';
+import Goal from './goal.jsx';
+import Kcal from './Kcal.jsx';
+import { getToday } from './getToday.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,7 +15,7 @@ class App extends React.Component {
       stepsToday: 0
     }
 
-    this.getToday = this.getToday.bind(this);
+    // this.getToday = this.getToday.bind(this);
   }
 
   componentDidMount() {
@@ -28,26 +32,20 @@ class App extends React.Component {
           stepsToday: newData.stepsToday
         })
       })
-  }
-
-  getToday() {
-    let today = new Date();
-    let dd = today.getDate();
-    let mm = today.getMonth() + 1;
-    let yyyy = today.getFullYear();
-    if (dd < 10) {
-      dd = '0' + dd;
-    }
-    if (mm < 10) {
-      mm = '0' + mm;
-    }
-    return mm + '/' + dd + '/' + yyyy;
+      .catch(() => {
+        this.setState({
+          date: getToday(),
+          curSteps: 0,
+          stepsToday: 0
+        })
+      })
   }
 
   render() {
+    // console.log(getToday());
     return (
       <div className="dashboard">
-        <div className="today">Today</div>
+        <Date today={this.state.date}/>
         <CurrentStep curSteps={this.state.curSteps + this.state.stepsToday}/>
       </div>
     )
@@ -55,3 +53,19 @@ class App extends React.Component {
 }
 
 export default App;
+
+
+// function getToday() {
+//   let today = new Date();
+//   // console.log(today);
+//   let dd = today.today();
+//   let mm = today.getMonth() + 1;
+//   let yyyy = today.getFullYear();
+//   if (dd < 10) {
+//     dd = '0' + dd;
+//   }
+//   if (mm < 10) {
+//     mm = '0' + mm;
+//   }
+//   return mm + '/' + dd + '/' + yyyy;
+// }
