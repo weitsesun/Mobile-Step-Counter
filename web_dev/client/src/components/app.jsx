@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import CurrentStep from './currentStep.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -46,9 +47,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="dashboard">
-        <div>{this.state.date}</div>
-        <div>Current Steps: {this.state.curSteps}</div>
-        <div>Today: {this.state.stepsToday}</div>
+        <div className="today">Today</div>
+        <CurrentStep curSteps={this.state.curSteps + this.state.stepsToday}/>
       </div>
     )
   }
