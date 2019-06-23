@@ -1,6 +1,6 @@
 .dashboard div{
   font-family: 'Roboto', sans-serif;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .dashboard {
@@ -13,7 +13,15 @@
 }
 
 .date {
-  margin-top: 3%;
+  margin-top: 13px;
+}
+
+.goal {
+  margin-top: 28px;
+}
+
+.kcal {
+  margin-top: 16px;
 }
 
 .currentStep {
