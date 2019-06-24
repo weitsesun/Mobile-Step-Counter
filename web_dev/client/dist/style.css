@@ -40,9 +40,9 @@
   animation: myanimation 5s infinite;
 }
 @keyframes myanimation {
-  0% {border-color: #03A9F4;}
-  25% {border-color: #2196F3;}
-  50% {border-color: #3F51B5;}
-  75% {border-color: #2196F3;}
-  100% {border-color: #19b9ce;}
+  0% {border-color: #03A9F4; color: #03A9F4;}
+  25% {border-color: #2196F3; color: #2196F3;}
+  50% {border-color: #3F51B5; color: #3F51B5;}
+  75% {border-color: #2196F3; color: #2196F3;}
+  100% {border-color: #19b9ce; color: #19b9ce;}
 }
