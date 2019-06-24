@@ -14,14 +14,17 @@
 
 .date {
   margin-top: 13px;
+  color: #7e7e7e;
 }
 
 .goal {
   margin-top: 28px;
+  color: #ff7f51;
 }
 
 .kcal {
   margin-top: 16px;
+  color: #e7c61b;
 }
 
 .currentStep {

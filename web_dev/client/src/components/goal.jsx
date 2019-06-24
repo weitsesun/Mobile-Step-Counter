@@ -5,11 +5,11 @@ class Goal extends React.Component {
     super(props);
   }
   render() {
-    let goal = (this.props.curSteps/100).toFixed(1);
+    let goal = (this.props.curSteps/100).toFixed(2);
     goal > 100 ? 100 : goal;
     return (
       <div className="goal">
-        Goal:   {goal + ' %'}
+        Goal {goal + ' %'}
       </div>
     )
   }
