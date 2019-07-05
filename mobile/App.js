@@ -16,7 +16,7 @@ export default class PedometerSensor extends React.Component {
   }
 
   sendData() {
-    axios.post('http://3.17.24.167:3000/', { 
+    axios.post('http://3.18.214.117:3000/', { 
       pastStepCount: this.state.pastStepCount,
       currentStepCount: this.state.currentStepCount
   }).then(() => {
@@ -79,11 +79,8 @@ export default class PedometerSensor extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* <Text>
-          Pedometer.isAvailableAsync(): {this.state.isPedometerAvailable}
-        </Text> */}
         <Text style={{"fontSize":20}}>
-          Total steps today: {this.state.pastStepCount}
+          Previous walk: {this.state.pastStepCount}
         </Text>
         <Text style={{"fontSize":20}}>
           Current: {this.state.currentStepCount}

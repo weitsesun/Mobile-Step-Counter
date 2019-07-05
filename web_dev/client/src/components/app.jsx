@@ -15,7 +15,6 @@ class App extends React.Component {
       stepsToday: 0
     }
 
-    // this.getToday = this.getToday.bind(this);
   }
 
   componentDidMount() {
@@ -42,7 +41,6 @@ class App extends React.Component {
   }
 
   render() {
-    // console.log(getToday());
     return (
       <div className="dashboard">
         <Date today={this.state.date}/>
@@ -55,19 +53,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-
-// function getToday() {
-//   let today = new Date();
-//   // console.log(today);
-//   let dd = today.today();
-//   let mm = today.getMonth() + 1;
-//   let yyyy = today.getFullYear();
-//   if (dd < 10) {
-//     dd = '0' + dd;
-//   }
-//   if (mm < 10) {
-//     mm = '0' + mm;
-//   }
-//   return mm + '/' + dd + '/' + yyyy;
-// }
