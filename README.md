@@ -22,6 +22,8 @@ Scan the QR code with your mobile device.
 Mobile-app will automatically installed.
 
 Start walking and go to [AWS EC2](http://3.18.214.117:3000/) to see how many steps you have walked today.
+
+
 Server
 ------
 To run the server locally, in folder `web_dev`,  run the following command in terminal
