@@ -26,8 +26,6 @@ app.get('/steps', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  console.log('recieved a post request')
-  console.log(req.body);
   let today = getToday();
   Steps.findOneAndUpdate({"date": today}, {"curSteps": req.body.currentStepCount, "stepsToday": req.body.pastStepCount }, {upsert: true}, 
               (err, data) => {
