@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const { Steps } = require("../Database/schema.js");
-mongoose.connect('mongodb://localhost:27017/steps', { useNewUrlParser: true });
+// mongoose.connect('mongodb://localhost:27017/steps', { useNewUrlParser: true });
 
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -17,7 +17,6 @@ app.use(express.static(`${__dirname}/../client/dist`));
 
 app.get('/steps', (req, res) => {
   let getNow = req.query.date;
-  console.log(getNow)
   Steps.find({ "date": getNow }, (err, data) => {
     if (err) {
       res.status(500).send(err);
@@ -29,6 +28,7 @@ app.get('/steps', (req, res) => {
 
 app.post('/', (req, res) => {
   let today = getToday();
+  console.log(today)
   try {
     Steps.update(
       {
