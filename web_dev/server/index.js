@@ -17,6 +17,7 @@ app.use(express.static(`${__dirname}/../client/dist`));
 
 app.get('/steps', (req, res) => {
   let getNow = req.query.date;
+  console.log(getNow)
   Steps.find({ "date": getNow }, (err, data) => {
     if (err) {
       res.status(500).send(err);
