@@ -30,8 +30,9 @@ app.post('/', (req, res) => {
   let today = getToday();
   try {
     Steps.update(
-      { "date": today },
       {
+        "date": today,
+
         "curSteps": req.body.currentStepCount,
         "stepsToday": req.body.pastStepCount
       },
