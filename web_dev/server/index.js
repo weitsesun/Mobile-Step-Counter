@@ -29,39 +29,39 @@ app.get('/steps', (req, res) => {
 app.post('/', (req, res) => {
   let today = getToday();
   console.log(today)
-  try {
-    Steps.update(
-      {
-        "date": today,
+  // try {
+  //   Steps.update(
+  //     {
+  //       "date": today,
 
-        "curSteps": req.body.currentStepCount,
-        "stepsToday": req.body.pastStepCount
-      },
-      { upsert: true })
-  }
-  catch (e) {
-    res.status(500).send(e);
-  }
-  // Steps.findOneAndUpdate(
-  //   { "date": today },
-  //   {
-  //     "curSteps": req.body.currentStepCount,
-  //     "stepsToday": req.body.pastStepCount
-  //   },
-  //   { upsert: true },
-  //   (err, data) => {
-  //     if (err) {
-  //       console.log(err);
-  //       res.status(500).send(err);
-  //       return;
-  //     }
-  //     res.status(201).send('finished');
-  //   })
+  //       "curSteps": req.body.currentStepCount,
+  //       "stepsToday": req.body.pastStepCount
+  //     },
+  //     { upsert: true })
+  // }
+  // catch (e) {
+  //   res.status(500).send(e);
+  // }
+  Steps.findOneAndUpdate(
+    { "date": today },
+    {
+      "curSteps": req.body.currentStepCount,
+      "stepsToday": req.body.pastStepCount
+    },
+    { upsert: true },
+    (err, data) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send(err);
+        return;
+      }
+      res.status(201).send('finished');
+    })
 })
 
 function getToday() {
   let today = new Date();
-  let dd = today.getDate();
+  let dd = today.getDate() - 1;
   let mm = today.getMonth() + 1;
   let yyyy = today.getFullYear();
   if (dd < 10) {
