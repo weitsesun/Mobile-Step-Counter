@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const { Steps } = require("../Database/schema.js");
+mongoose.connect('mongodb://localhost:27017/steps', { useNewUrlParser: true });
 
 const bodyParser = require('body-parser');
 const cors = require('cors');
