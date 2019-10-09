@@ -16,8 +16,8 @@ app.use(express.static(`${__dirname}/../client/dist`));
 
 app.get('/steps', (req, res) => {
   let getNow = req.query.date;
-  Steps.find({"date": getNow}, (err, data) => {
-    if(err) {
+  Steps.find({ "date": getNow }, (err, data) => {
+    if (err) {
       res.status(500).send(err);
       return;
     }
@@ -27,15 +27,33 @@ app.get('/steps', (req, res) => {
 
 app.post('/', (req, res) => {
   let today = getToday();
-  Steps.findOneAndUpdate({"date": today}, {"curSteps": req.body.currentStepCount, "stepsToday": req.body.pastStepCount }, {upsert: true}, 
-              (err, data) => {
-                  if(err) {
-                    console.log(err);
-                    res.status(500).send(err);
-                    return;
-                  }
-                  res.status(201).send('finished');
-              })
+  try {
+    Steps.findOneAndUpdate(
+      { "date": today },
+      {
+        "curSteps": req.body.currentStepCount,
+        "stepsToday": req.body.pastStepCount
+      },
+      { upsert: true })
+  }
+  catch (e) {
+    res.status(500).send(e);
+  }
+  // Steps.findOneAndUpdate(
+  //   { "date": today },
+  //   {
+  //     "curSteps": req.body.currentStepCount,
+  //     "stepsToday": req.body.pastStepCount
+  //   },
+  //   { upsert: true },
+  //   (err, data) => {
+  //     if (err) {
+  //       console.log(err);
+  //       res.status(500).send(err);
+  //       return;
+  //     }
+  //     res.status(201).send('finished');
+  //   })
 })
 
 function getToday() {
