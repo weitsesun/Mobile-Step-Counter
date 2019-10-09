@@ -9,7 +9,7 @@ class Goal extends React.Component {
     goal > 100 ? 100 : goal;
     return (
       <div className="goal">
-        Goal {goal + ' %'}
+        Goal we{goal + ' %'}
       </div>
     )
   }

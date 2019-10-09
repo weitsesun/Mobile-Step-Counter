@@ -3,6 +3,8 @@ import { Pedometer } from "expo-sensors";
 import { StyleSheet, Text, View } from "react-native";
 import axios from 'axios';
 
+const POST_ADDR = 'http://3.14.88.26:3010/'
+
 export default class PedometerSensor extends React.Component {
   state = {
     isPedometerAvailable: "checking",
@@ -16,7 +18,7 @@ export default class PedometerSensor extends React.Component {
   }
 
   sendData() {
-    axios.post('http://3.18.214.117:3000/', { 
+    axios.post(POST_ADDR, { 
       pastStepCount: this.state.pastStepCount,
       currentStepCount: this.state.currentStepCount
   }).then(() => {
