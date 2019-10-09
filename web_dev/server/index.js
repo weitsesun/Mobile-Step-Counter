@@ -29,7 +29,7 @@ app.get('/steps', (req, res) => {
 app.post('/', (req, res) => {
   let today = getToday();
   try {
-    Steps.findOneAndUpdate(
+    Steps.update(
       { "date": today },
       {
         "curSteps": req.body.currentStepCount,
