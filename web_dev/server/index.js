@@ -28,7 +28,6 @@ app.get('/steps', (req, res) => {
 
 app.post('/', (req, res) => {
   let today = getToday();
-  console.log(today)
   // try {
   //   Steps.update(
   //     {
