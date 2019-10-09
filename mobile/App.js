@@ -17,7 +17,7 @@ export default class PedometerSensor extends React.Component {
   }
 
   sendData() {
-    axios.post('http://3.14.88.26:3010/', { 
+    axios.post('http://3.14.88.26:3000/', { 
       pastStepCount: this.state.pastStepCount,
       currentStepCount: this.state.currentStepCount
   }).then(() => {
